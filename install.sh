@@ -1,9 +1,9 @@
 
-#Step 1) Check if root--------------------------------------
-#if [[ $EUID -ne 0 ]]; then
-#   echo "Please execute script as root."
-#   exit 1
-#fi
+Step 1) Check if root--------------------------------------
+if [[ $EUID -ne 0 ]]; then
+   echo "Please execute script as root."
+   exit 1
+fi
 
 #Step 2) Download Python script-----------------------------
 cd /home/pi
@@ -35,7 +35,7 @@ if [ -e $script ];
 		wget "https://raw.githubusercontent.com/DeikiChen/softpower/master/softshutdown.desktop"
 fi
 #-------------------------------------------------------------
-#Step 7) Reboot to apply changes----------------------------
+#Step 5) Reboot to apply changes----------------------------
 echo "SuperNESPi Case installation done. Will now reboot after 3 seconds."
 sleep 3
 sudo reboot
