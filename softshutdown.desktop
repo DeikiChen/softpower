@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=softpowe.py
 Comment=My Python Program
-Exec=python /home/pi/SNESPi/softshutdown.py
+Exec=python /home/pi/SuperNESPi/softshutdown.py
 Icon=/home/pi/example.png
 Terminal=false
 MultipleArgs=false
