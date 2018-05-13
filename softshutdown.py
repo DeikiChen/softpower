@@ -25,15 +25,21 @@ class myThread (threading.Thread):
         self.name = name
         self.counter = counter
     def run(self):
-        file = open("/sys/class/thermal/thermal_zone0/temp")
-        temp = float(file.read()) / 1000
-        file.close()
-        temp="temp : %.1f" % temp
-        print temp
-        if temp>50:
-            GPIO.output(fanPin, GPIO.LOW)
-        if temp<45:
-            GPIO.output(fanPin, GPIO.HIGH)
+        while 1:
+
+            file = open("/sys/class/thermal/thermal_zone0/temp")
+            temp = float(file.read()) / 1000
+            file.close()
+            if temp > 60:
+                GPIO.output(fanPin, GPIO.LOW)
+            if temp < 53:
+                GPIO.output(fanPin, GPIO.HIGH)
+
+            temp="temp : %.1f" % temp
+            print temp
+
+
+            time.sleep(10)
 
 thread1 = myThread(1, "Thread-1", 1)
 thread1.start()
