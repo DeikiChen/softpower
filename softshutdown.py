@@ -2,16 +2,48 @@
 import RPi.GPIO as GPIO
 import time
 import os
+import threading
 
 powerPin=7
 resetPin=8
 sparepowerPin=3
+fanPin=5
+
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(sparepowerPin,GPIO.OUT)
 GPIO.setup(powerPin,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(8,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(resetPin,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(fanPin,GPIO.OUT)
+
 power_sate=0
+
+class myThread (threading.Thread):
+    def __init__(self, threadID, name, counter):
+        threading.Thread.__init__(self)
+        self.threadID = threadID
+        self.name = name
+        self.counter = counter
+    def run(self):
+        file = open("/sys/class/thermal/thermal_zone0/temp")
+        temp = float(file.read()) / 1000
+        file.close()
+        temp="temp : %.1f" % temp
+        print temp
+        if temp>50:
+            GPIO.output(fanPin, GPIO.LOW)
+        if temp<45:
+            GPIO.output(fanPin, GPIO.HIGH)
+
+thread1 = myThread(1, "Thread-1", 1)
+thread1.start()
+
+
+
+
+thread1 = myThread(1, "Thread-1", 1)
+
+
 
 
 while True:
