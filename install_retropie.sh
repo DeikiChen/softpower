@@ -33,6 +33,13 @@ if grep -q "sudo python \/opt\/SuperNESPi\/softshutdown.py \&" "$RC";
 fi
 #-----------------------------------------------------------
 
+#-------------------------------------------------------------
+#Step 5) Reboot to apply changes----------------------------
+echo "SuperNESPi Case installation done. Will now reboot after 3 seconds."
+sleep 3
+sudo reboot
+#-----------------------------------------------------------
 
-cd /etc/
+
+
 
