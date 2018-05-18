@@ -1,3 +1,4 @@
+#!/usr/bin/env python2.7
 # -*- coding:UTF-8 -*-
 import RPi.GPIO as GPIO
 import time
@@ -6,8 +7,8 @@ import threading
 
 powerPin=7
 resetPin=8
-sparepowerPin=3
-fanPin=5
+sparepowerPin=12
+fanPin=10
 
 
 GPIO.setmode(GPIO.BOARD)
@@ -56,7 +57,7 @@ while True:
     
     time.sleep(0.5)
     #pin7 is the power_key detect ponit ,if PIN7 is hight ,it is mean now is saft soft-shutdown
-    '''
+    '''`
     检测Pin 7 powerPin
     开机程序运行后检测电源键位；
     状态0为未检测状态，如果电位为高电平系统判断为软关机模式，将状态设置为2
