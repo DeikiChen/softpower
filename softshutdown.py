@@ -7,8 +7,8 @@ import threading
 
 powerPin=7
 resetPin=8
-sparepowerPin=12
-fanPin=10
+sparepowerPin=3
+fanPin=5
 
 
 GPIO.setmode(GPIO.BOARD)
