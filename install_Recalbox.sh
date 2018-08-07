@@ -6,16 +6,6 @@ mount -o remount, rw /boot
 mount -o remount, rw /
 
 #--------------------------
-
-sleep 2s
-
-if grep -q "^system.power.switch=PIN356ONOFFRESET*" "/recalbox/share/system/recalbox.conf";
-	then
-		echo "PIN356ONOFFRESET configuration already enabled."
-	else
-		echo "system.power.switch=PIN356ONOFFRESET" >> /recalbox/share/system/recalbox.conf
-		echo "PIN356ONOFFRESET configuration enabled."
-fi
 #-----------------------------------------------------------
 
 #Step 3) Download Python script-----------------------------
